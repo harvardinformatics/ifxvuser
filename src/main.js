@@ -27,4 +27,4 @@ export default function install(Vue, options ={}) {
   Object.keys(ifxcomponents).forEach(name => {
     Vue.component(name, ifxcomponents[name]);
   })
-})
+}
