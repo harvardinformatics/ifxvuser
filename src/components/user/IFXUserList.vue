@@ -1,17 +1,16 @@
 <script>
-import { mapActions, mapGetters } from "vuex"
-
+import { mapActions } from 'vuex'
 
 export default {
-  name: "IFXUserList",
+  name: 'IFXUserList',
   props: {
-    'userApi': Object,
-    'auth': Object,
-    'storagePrefix': { /* prefix for localStorage items for the application, e.g. 'p3' */
-      'type': String,
-      'default': ''
+    userApi: Object,
+    auth: Object,
+    storagePrefix: { /* prefix for localStorage items for the application, e.g. 'p3' */
+      type: String,
+      default: ''
     },
-    'actions': Object
+    actions: Object
   },
   data() {
     return {
@@ -47,20 +46,19 @@ export default {
       users: [],
       selectedUsers: [],
       pagination: {
-        sortBy: "last_name",
+        sortBy: 'last_name',
         descending: false,
         totalItems: 0
       },
-      usersPerPageItems: [10, 20, 50, { text: "All", value: -1 }]
+      usersPerPageItems: [10, 20, 50, { text: 'All', value: -1 }]
     }
   },
   methods: {
     async getUsers(sort) {
       this.loading = true
-      let me = this
-      this.users = await this.userApi.getUsers({include_disabled: this.include_disabled})
+      this.users = await this.userApi.getUsers({ include_disabled: this.include_disabled })
         .then((res) => res)
-        .catch(error => {
+        .catch((error) => {
           this.showMessage(error)
         })
       if (sort) {
@@ -68,8 +66,8 @@ export default {
       }
       this.pagination.totalItems = this.users.length
     },
-    userStyle (user) {
-      return 'user'
+    userStyle(user) {
+      return this.userApi.userStyle(user)
     },
     sortUsers() {
       const { sortBy, descending, page, rowsPerPage } = this.pagination
@@ -93,39 +91,37 @@ export default {
       }
       // Filter reqs by search term
       if (this.search) {
-        this.filterUsers(this.search)
+        this.filterUsers()
       }
       if (rowsPerPage > 0) {
         this.users = this.users.slice((page - 1) * rowsPerPage, page * rowsPerPage)
       }
     },
-    filterUsers(string) {
+    filterUsers() {
       // Deep search of each request object
-      return this.users.filter(obj => {
-        return (
-          Object.values(obj)
-            // Removes nulls and arrays and checks if each type is string
-            .filter(v => !!v && !Array.isArray(v) && typeof v == "string")
-            // Checks each remaining string in search is substring
-            .some(e => e.toLowerCase().includes(this.search.toLowerCase()))
-        )
-      })
+      return this.users.filter((obj) => (
+        Object.values(obj)
+          // Removes nulls and arrays and checks if each type is string
+          .filter((v) => !!v && !Array.isArray(v) && typeof v === 'string')
+          // Checks each remaining string in search is substring
+          .some((e) => e.toLowerCase().includes(this.search.toLowerCase()))
+      ))
     },
     getRowsPerPage() {
-      let rowsPref = parseInt(localStorage.getItem(this.storagePrefix + "userListRowsPerPage"))
+      let rowsPref = parseInt(localStorage.getItem(this.storagePrefix + 'userListRowsPerPage'))
       if (!rowsPref) {
-        localStorage.setItem(this.storagePrefix + "userListRowsPerPage", "10")
+        localStorage.setItem(this.storagePrefix + 'userListRowsPerPage', '10')
         rowsPref = 10
       }
       this.pagination.rowsPerPage = rowsPref
     },
     updateRowsPerPage() {
-      localStorage.setItem(this.storagePrefix + "userListRowsPerPage", this.pagination.rowsPerPage.toString())
+      localStorage.setItem(this.storagePrefix + 'userListRowsPerPage', this.pagination.rowsPerPage.toString())
     },
     completeAction() {
       this.updatePerson()
       this.selectedUsers = []
-      this.actions.selected = ""
+      this.actions.selected = ''
       this.closeDialog()
     },
     openDialog() {
@@ -133,37 +129,36 @@ export default {
     },
     closeDialog() {
       this.dialog = false
-      this.actions.selected = ""
+      this.actions.selected = ''
     },
     updatePerson() {
-      let me = this
-      let promises = []
-      let promise
-      let errors = []
-      this.users.selected.forEach(u => {
-        u = this.actOnUserData(u, this.actions.selected)
-        promise = new Promise(function(resolve, reject) {
-          return api.user.update(u)
-            .catch((err) => {
-              reject(err)
-            })
-        })
-        promises.push(promise)
-      })
-      Promise.all(promises)
-        .catch((error) => {
-          me.showMessage(error)
-        })
+      // const me = this
+      // const promises = []
+      // let promise
+      // this.users.selected.forEach(u => {
+      //   u = this.actOnUserData(u, this.actions.selected)
+      //   promise = new Promise(function(resolve, reject) {
+      //     return userApi.update(u)
+      //       .catch((err) => {
+      //         reject(err)
+      //       })
+      //   })
+      //   promises.push(promise)
+      // })
+      // Promise.all(promises)
+      //   .catch((error) => {
+      //     me.showMessage(error)
+      //   })
     },
     actOnUserData(user, action) {
       // action must be a method on the UserAPI
-      api.user[action](user)
+      this.userApi.user[action](user)
       user.change_comment = `${action} for ${user}`
       return user
     },
     isActionAvailableForAllUsers(action) {
       let flag = true
-      this.users.selected.forEach(user => {
+      this.users.selected.forEach((user) => {
         if (!action.condition(user)) {
           flag = false
         }
@@ -179,60 +174,49 @@ export default {
       }
       return name
     },
-    ...mapActions(["showMessage"])
+    ...mapActions(['showMessage'])
   },
   computed: {
-    selectedFormattedUsers: function () {
-      return Array.from (
-        this.selectedUsers,
-        u => u.full_name
-      )
-      .toString()
-      .replace(/,/g, ", ")
-    },
-    availableActions: function() {
-      let availableActions = []
-      this.actions.all.forEach(action => {
+    selectedFormattedUsers: () => Array.from(this.selectedUsers, (u) => u.full_name).toString().replace(/,/g, ', '),
+    availableActions: () => {
+      const availableActions = []
+      this.actions.all.forEach((action) => {
         if (this.isActionAvailableForAllUsers(action)) {
           availableActions.push(action)
         }
       })
-      return availableActions.length ? [...new Set(availableActions)] : ["There are no available actions for selected users."]
+      return availableActions.length ? [...new Set(availableActions)] : ['There are no available actions for selected users.']
     },
-    is_admin: function() {
-      return auth.isAdmin()
-    },
-    username: function() {
-      return auth.getUsername()
-    },
-    headers: function() {
-      let h = [
+    is_admin: () => this.auth.isAdmin(),
+    username: () => this.auth.getUsername(),
+    headers: () => {
+      const h = [
         {
-          text: "First Name",
-          align: "left",
-          value: "first_name",
+          text: 'First Name',
+          align: 'left',
+          value: 'first_name',
           sortable: true
         },
         {
-          text: "Last Name",
-          align: "left",
-          value: "last_name",
+          text: 'Last Name',
+          align: 'left',
+          value: 'last_name',
           sortable: true
         },
         {
-          text: "Full Name",
-          align: "left",
-          value: "full_name",
+          text: 'Full Name',
+          align: 'left',
+          value: 'full_name',
           sortable: true
         },
-        { text: "Primary email", value: "primary_email", sortable: true},
-        { text: "NICE login", value: "is_active", sortable: true }
+        { text: 'Primary email', value: 'primary_email', sortable: true },
+        { text: 'NICE login', value: 'is_active', sortable: true }
       ]
       return h
     },
     computedHeaders() {
       return this.headers.filter(
-        h => !h.hide || !this.$vuetify.breakpoint[h.hide]
+        (h) => !h.hide || !this.$vuetify.breakpoint[h.hide]
       )
     },
     isActionSelectActive() {
@@ -259,10 +243,10 @@ export default {
       },
       deep: true
     },
-    include_disabled: function () {
+    include_disabled: () => {
       this.getUsers(true)
         .finally((this.loading = false))
-      }
+    }
   }
 }
 </script>
@@ -297,7 +281,14 @@ export default {
                 <span class="headline">Users</span>
               </v-flex>
               <v-flex xs5>
-                <v-text-field v-model="search" label="Search" single-line hide-details clearable></v-text-field>
+                <v-text-field
+                  v-model="search"
+                  label="Search"
+                  single-line
+                  hide-details
+                  clearable
+                >
+                </v-text-field>
               </v-flex>
               <v-spacer></v-spacer>
               <v-flex grow>
@@ -355,7 +346,11 @@ export default {
                 <td class="full-name">
                   {{props.item.full_name}}
                 </td>
-                <td><a :href="`mailto:${props.item.primary_email}`">{{props.item.primary_email}}</a></td>
+                <td>
+                  <a :href="`mailto:${props.item.primary_email}`">
+                    {{props.item.primary_email}}
+                  </a>
+                </td>
                 <td>
                   <v-icon color="green" v-if="props.item.is_active">vpn_key</v-icon>
                   <v-icon color="green" v-else>close</v-icon>
@@ -377,25 +372,25 @@ export default {
 
 <style lang="css" scoped>
   .v-text-field__details {
-    display: none !important
+    display: none !important;
   }
 
   .v-select-list > .v-list {
-    padding: 0
+    padding: 0;
   }
 
   .v-select-list > .v-list__tile {
-    border-bottom: 1px red solid
+    border-bottom: 1px red solid;
   }
 
   .v-select-list {
-    padding: 0
+    padding: 0;
   }
 
   td {
-    max-width: 120px
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 </style>

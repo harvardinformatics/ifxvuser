@@ -79,7 +79,7 @@ class User {
   }
 
   addToGroup(group) {
-    if (indexOf(this.user.groups, group) == -1) {
+    if (indexOf(this.user.groups, group) === -1) {
       this.user.groups.push(group)
     }
   }

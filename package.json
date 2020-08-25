@@ -50,7 +50,15 @@
     "rules": {
       "max-classes-per-file": 0,
       "class-methods-use-this": "warn",
-      "semi": 0
+      "semi": 0,
+      "comma-dangle": 0,
+      "prefer-template": "warn",
+      "object-curly-newline": "warn",
+      "no-else-return": "warn",
+      "object-shorthand": "warn",
+      "prefer-const": "warn",
+      "radix": 0,
+      "no-param-reassign": "warn"
     },
     "overrides": [
       {

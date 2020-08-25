@@ -1,6 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
 import Vuetify from 'vuetify'
+import App from './App.vue'
+import { Request, AccountRequest, RequestAPI } from './request'
+import { UserAPI, User } from './user'
+import IFXUserList from './components/user/IFXUserList.vue'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify, {
@@ -16,15 +19,18 @@ Vue.use(Vuetify, {
   },
   options: {
     customProperties: true
-  }
+  },
 })
 
 new Vue({
   render: (h) => h(App),
 }).$mount('#app')
 
-export default function install(Vue, options ={}) {
-  Object.keys(ifxcomponents).forEach(name => {
-    Vue.component(name, ifxcomponents[name]);
-  })
+export {
+  Request,
+  RequestAPI,
+  AccountRequest,
+  User,
+  UserAPI,
+  IFXUserList
 }
