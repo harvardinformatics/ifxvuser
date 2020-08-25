@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build-lib": "vue-cli-service build --target lib --name ifxvuser src/main.js"
   },
@@ -13,15 +14,23 @@
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
     "lodash": "^4.17.20",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.3",
+    "vuetify": "^2.2.20",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.4",
+    "@vue/cli-plugin-unit-jest": "^4.5.4",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
+    "flush-promises": "^1.0.2",
     "jest": "^26.4.2",
     "vue-template-compiler": "^2.6.11"
   },
@@ -32,16 +41,46 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/airbnb"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "max-classes-per-file": 0,
+      "class-methods-use-this": "warn",
+      "semi": 0
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
+    }
+  }
 }
