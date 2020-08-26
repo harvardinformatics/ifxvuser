@@ -36,5 +36,14 @@ export default {
   RequestAPI,
   AccountRequest,
   User,
-  UserAPI,
+  UserAPI
+}
+
+export {
+  install,
+  Request,
+  RequestAPI,
+  AccountRequest,
+  User,
+  UserAPI
 }

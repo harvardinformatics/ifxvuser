@@ -51784,6 +51784,14 @@ module.exports = function (key) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "install", function() { return /* reexport */ install; });
+__webpack_require__.d(__webpack_exports__, "Request", function() { return /* reexport */ request_Request; });
+__webpack_require__.d(__webpack_exports__, "RequestAPI", function() { return /* reexport */ request_RequestAPI; });
+__webpack_require__.d(__webpack_exports__, "AccountRequest", function() { return /* reexport */ request_AccountRequest; });
+__webpack_require__.d(__webpack_exports__, "User", function() { return /* reexport */ user_User; });
+__webpack_require__.d(__webpack_exports__, "UserAPI", function() { return /* reexport */ user_UserAPI; });
+
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
@@ -52499,6 +52507,7 @@ var indexOf_default = /*#__PURE__*/__webpack_require__.n(indexOf);
 
 
 
+
 var user_User = /*#__PURE__*/function () {
   function User(user) {
     _classCallCheck(this, User);
@@ -52605,6 +52614,7 @@ var user_User = /*#__PURE__*/function () {
 
   return User;
 }();
+
 var user_UserAPI = /*#__PURE__*/function () {
   function UserAPI(apiRoot, auth) {
     _classCallCheck(this, UserAPI);
@@ -52713,6 +52723,8 @@ var user_UserAPI = /*#__PURE__*/function () {
 
   return UserAPI;
 }();
+
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.search.js
 var es_string_search = __webpack_require__("841c");
 
@@ -53564,6 +53576,7 @@ function install(_Vue) {
   User: user_User,
   UserAPI: user_UserAPI
 });
+
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
