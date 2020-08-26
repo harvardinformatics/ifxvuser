@@ -6,7 +6,7 @@ import axios from 'axios'
 import forEach from 'lodash/forEach'
 import indexOf from 'lodash/indexOf'
 
-class User {
+export class User {
   constructor(user) {
     if (user) {
       this.user = user
@@ -97,7 +97,7 @@ class User {
   }
 }
 
-class UserAPI {
+export class UserAPI {
   constructor(apiRoot, auth) {
     this.apiRoot = apiRoot
     this.auth = auth
@@ -155,5 +155,3 @@ class UserAPI {
   //   return axios.post(url, data, {headers: {Authorization: `${this.auth.getAuthHeaderValue()}`}})
   // }
 }
-
-export { User, UserAPI }
