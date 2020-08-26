@@ -26,11 +26,15 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app')
 
-export {
+function install(_Vue) {
+  _Vue.component('IFXUserList', IFXUserList)
+}
+
+export default {
+  install,
   Request,
   RequestAPI,
   AccountRequest,
   User,
   UserAPI,
-  IFXUserList
 }

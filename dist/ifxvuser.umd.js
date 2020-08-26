@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "fae3");
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -51777,20 +51777,12 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "fae3":
+/***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "Request", function() { return /* reexport */ request_Request; });
-__webpack_require__.d(__webpack_exports__, "RequestAPI", function() { return /* reexport */ request_RequestAPI; });
-__webpack_require__.d(__webpack_exports__, "AccountRequest", function() { return /* reexport */ request_AccountRequest; });
-__webpack_require__.d(__webpack_exports__, "User", function() { return /* reexport */ user_User; });
-__webpack_require__.d(__webpack_exports__, "UserAPI", function() { return /* reexport */ user_UserAPI; });
-__webpack_require__.d(__webpack_exports__, "IFXUserList", function() { return /* reexport */ IFXUserList; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -53564,8 +53556,22 @@ new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
   }
 }).$mount('#app');
 
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
+function install(_Vue) {
+  _Vue.component('IFXUserList', IFXUserList);
+}
 
+/* harmony default export */ var main = ({
+  install: install,
+  Request: request_Request,
+  RequestAPI: request_RequestAPI,
+  AccountRequest: request_AccountRequest,
+  User: user_User,
+  UserAPI: user_UserAPI
+});
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (main);
 
 
 
