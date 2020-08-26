@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      search: localStorage.getItem(this.storagePrefix + 'UserListSearch') || '',
+      search: localStorage.getItem(`${this.storagePrefix}UserListSearch`) || '',
       loading: false,
       dialog: false,
       include_disabled: false,
@@ -82,11 +82,10 @@ export default {
             if (sortA < sortB) return 1
             if (sortA > sortB) return -1
             return 0
-          } else {
-            if (sortA < sortB) return -1
-            if (sortA > sortB) return 1
-            return 0
           }
+          if (sortA < sortB) return -1
+          if (sortA > sortB) return 1
+          return 0
         })
       }
       // Filter reqs by search term
@@ -108,15 +107,15 @@ export default {
       ))
     },
     getRowsPerPage() {
-      let rowsPref = parseInt(localStorage.getItem(this.storagePrefix + 'userListRowsPerPage'))
+      let rowsPref = parseInt(localStorage.getItem(`${this.storagePrefix}userListRowsPerPage`))
       if (!rowsPref) {
-        localStorage.setItem(this.storagePrefix + 'userListRowsPerPage', '10')
+        localStorage.setItem(`${this.storagePrefix}userListRowsPerPage`, '10')
         rowsPref = 10
       }
       this.pagination.rowsPerPage = rowsPref
     },
     updateRowsPerPage() {
-      localStorage.setItem(this.storagePrefix + 'userListRowsPerPage', this.pagination.rowsPerPage.toString())
+      localStorage.setItem(`${this.storagePrefix}userListRowsPerPage`, this.pagination.rowsPerPage.toString())
     },
     completeAction() {
       this.updatePerson()
@@ -239,7 +238,7 @@ export default {
     search: {
       handler() {
         this.sortUsers()
-        localStorage.setItem(this.storagePrefix + 'UserListSearch', this.search ? this.search : '')
+        localStorage.setItem(`${this.storagePrefix}UserListSearch`, this.search ? this.search : '')
       },
       deep: true
     },
