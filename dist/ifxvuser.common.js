@@ -52606,6 +52606,8 @@ var user_User = /*#__PURE__*/function () {
   return User;
 }();
 
+;
+
 var user_UserAPI = /*#__PURE__*/function () {
   function UserAPI(apiRoot, auth) {
     _classCallCheck(this, UserAPI);
@@ -52715,6 +52717,7 @@ var user_UserAPI = /*#__PURE__*/function () {
   return UserAPI;
 }();
 
+;
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.search.js
 var es_string_search = __webpack_require__("841c");

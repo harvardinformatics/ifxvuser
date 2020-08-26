@@ -95,7 +95,7 @@ class User {
   isDjangoStaff() {
     return this.user.is_staff
   }
-}
+};
 
 class UserAPI {
   constructor(apiRoot, auth) {
@@ -154,6 +154,6 @@ class UserAPI {
   //   }
   //   return axios.post(url, data, {headers: {Authorization: `${this.auth.getAuthHeaderValue()}`}})
   // }
-}
+};
 
-export { User, UserAPI }
+export { User, UserAPI };
