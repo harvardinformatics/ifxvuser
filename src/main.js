@@ -1,8 +1,8 @@
 // import Vue from 'vue'
 // import Vuetify from 'vuetify'
 // import App from './App.vue'
-import { Request, AccountRequest, RequestAPI } from './request'
-import { UserAPI, User } from './user'
+// import { Request, AccountRequest, RequestAPI } from './request'
+// import { UserAPI, User } from './user'
 import IFXUserList from './components/user/IFXUserList.vue'
 
 // Vue.config.productionTip = false
@@ -32,18 +32,18 @@ function install(_Vue) {
 
 export default {
   install,
-  Request,
-  RequestAPI,
-  AccountRequest,
-  User,
-  UserAPI
+  // Request,
+  // RequestAPI,
+  // AccountRequest,
+  // User,
+  // UserAPI
 }
 
 export {
   install,
-  Request,
-  RequestAPI,
-  AccountRequest,
-  User,
-  UserAPI
+  // Request,
+  // RequestAPI,
+  // AccountRequest,
+  // User,
+  // UserAPI
 }
