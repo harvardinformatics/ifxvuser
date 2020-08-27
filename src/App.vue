@@ -1,21 +1,24 @@
+<template>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Development</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-toolbar>
+    <v-content>
+      <Message/>
+    </v-content>
+  </v-app>
+</template>
+
 <script>
 
 export default {
   name: 'App',
-};
-</script>
-<template>
-  <div id="app">
-  </div>
-</template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  data () {
+    return {
+    }
+  }
 }
-</style>
+</script>

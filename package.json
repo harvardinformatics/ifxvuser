@@ -1,99 +1,39 @@
 {
-  "name": "ifxvuser",
-  "version": "0.1.0",
-  "main": "dist/ifxvuser.umd.js",
+  "name": "ifxvue",
+  "description": "Harvard FAS Informatics User Interface Library",
+  "version": "0.2.8",
+  "main": "dist/ifxvue.umd.js",
+  "license": "GPL-2.0",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build-lib": "vue-cli-service build --target lib --name ifxvuser src/main.js"
+    "build": "vue-cli-service build --target lib --name ifxvue ./src/components/index.js"
   },
   "dependencies": {
-    "@vue/cli": "^4.5.4",
-    "axios": "^0.18.1",
-    "core-js": "^3.6.5",
-    "lodash": "^4.17.20",
-    "vue": "^2.6.11",
-    "vue-loader": "^15.9.3",
-    "vuetify": "^2.2.20",
-    "vuex": "^3.1.1"
+    "acorn": ">=6.4.1 <7.0.0",
+    "core-js": "^2.6.5",
+    "kind-of": ">=6.0.3",
+    "vue": "^2.6.10",
+    "vuetify": "^1.5.5",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "^4.5.4",
-    "@vue/cli-plugin-unit-jest": "^4.5.4",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-airbnb": "^5.0.2",
-    "@vue/test-utils": "^1.0.4",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "flush-promises": "^1.0.2",
-    "jest": "^26.4.2",
-    "vue-template-compiler": "^2.6.11"
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^4.1.2",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "rollup": "^1.30.0",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-vue": "^5.1.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.4.2"
   },
   "files": [
     "dist/*"
-  ],
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/airbnb"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "max-classes-per-file": 0,
-      "class-methods-use-this": "warn",
-      "semi": 0,
-      "comma-dangle": 0,
-      "prefer-template": "warn",
-      "object-curly-newline": "warn",
-      "no-else-return": "warn",
-      "object-shorthand": "warn",
-      "prefer-const": "warn",
-      "radix": 0,
-      "no-param-reassign": "warn",
-      "no-extra-semi": 0,
-      "max-len": 0
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "jest": {
-    "verbose": true,
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "transform": {
-      ".*\\.(vue)$": "vue-jest"
-    }
-  }
+  ]
 }

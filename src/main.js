@@ -1,37 +1,11 @@
-// import Vue from 'vue'
-// import Vuetify from 'vuetify'
-// import App from './App.vue'
-// import { Request, AccountRequest, RequestAPI } from './request'
-// import { UserAPI, User } from './user'
-import IFXUserList from './components/user/IFXUserList.vue'
+import Vue from 'vue'
+import './plugins/vuetify'
+import App from './App.vue'
+import store from './store'
 
-// Vue.config.productionTip = false
-// Vue.use(Vuetify, {
-//   iconfont: 'md',
-//   theme: {
-//     primary: '#C62828',
-//     secondary: '#90A4AE',
-//     accent: '#5C6BC0',
-//     error: '#db564c',
-//     warning: '#fcf3a1',
-//     info: '#2196f3',
-//     success: '#4caf50'
-//   },
-//   options: {
-//     customProperties: true
-//   },
-// })
-// new Vue({
-//   render: (h) => h(App),
-// }).$mount('#app')
-export default function install(Vue) {
-  Vue.component('IFXUserList', IFXUserList)
-}
-// export {
-//   install,
-//   // Request,
-//   // RequestAPI,
-//   // AccountRequest,
-//   // User,
-//   // UserAPI
-// }
+Vue.config.productionTip = false
+
+new Vue({
+  store,
+  render: h => h(App)
+}).$mount('#app')
