@@ -59,7 +59,8 @@
       "prefer-const": "warn",
       "radix": 0,
       "no-param-reassign": "warn",
-      "no-extra-semi": 0
+      "no-extra-semi": 0,
+      "max-len": 0
     },
     "overrides": [
       {
