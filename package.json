@@ -34,6 +34,9 @@
     "jest": "^26.4.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "files": [
+    "dist/*"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {
