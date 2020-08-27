@@ -6706,9 +6706,6 @@ module.exports = function (key) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "install", function() { return /* reexport */ install; });
-
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
@@ -7653,23 +7650,20 @@ IFXUserListvue_type_script_lang_js.__scopeId = "data-v-38fb7312"
 //   render: (h) => h(App),
 // }).$mount('#app')
 
-function install(_Vue) {
-  _Vue.component('IFXUserList', IFXUserList);
-}
-
-/* harmony default export */ var main = ({
-  install: install // Request,
-  // RequestAPI,
-  // AccountRequest,
-  // User,
-  // UserAPI
-
-});
-
+function install(Vue) {
+  Vue.component('IFXUserList', IFXUserList);
+} // export {
+//   install,
+//   // Request,
+//   // RequestAPI,
+//   // AccountRequest,
+//   // User,
+//   // UserAPI
+// }
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
-/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (main);
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (install);
 
 
 

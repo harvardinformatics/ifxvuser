@@ -21,29 +21,17 @@ import IFXUserList from './components/user/IFXUserList.vue'
 //     customProperties: true
 //   },
 // })
-
 // new Vue({
 //   render: (h) => h(App),
 // }).$mount('#app')
-
-function install(_Vue) {
-  _Vue.component('IFXUserList', IFXUserList)
+export default function install(Vue) {
+  Vue.component('IFXUserList', IFXUserList)
 }
-
-export default {
-  install,
-  // Request,
-  // RequestAPI,
-  // AccountRequest,
-  // User,
-  // UserAPI
-}
-
-export {
-  install,
-  // Request,
-  // RequestAPI,
-  // AccountRequest,
-  // User,
-  // UserAPI
-}
+// export {
+//   install,
+//   // Request,
+//   // RequestAPI,
+//   // AccountRequest,
+//   // User,
+//   // UserAPI
+// }
